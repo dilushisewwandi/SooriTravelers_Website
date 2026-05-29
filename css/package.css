@@ -1,0 +1,502 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  -webkit-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 9rem;
+}
+
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #111;
+  border-radius: 5rem;
+}
+
+body {
+  background: #D3D3D3;
+  
+}
+
+section {
+  padding: 3rem 9%;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  
+}
+
+.heading span {
+  color: #fff;
+  font-size: 2rem;
+}
+
+.heading h1 {
+  font-size: 4rem;
+  color: #fff;
+}
+
+.btn {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+  color: #fff;
+  border: 0.2rem solid #fff;
+  border-radius: 5rem;
+  cursor: pointer;
+  background: none;
+}
+.fbtn {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+  color: black;
+  border: 0.2rem solid black;
+  border-radius: 5rem;
+  cursor: pointer;
+  background: none;
+}
+
+.btn:hover {
+  background: #F9A603;
+  color: #111;
+}
+.fbtn:hover {
+  background: #F9A603;
+  color: white;
+  border: white;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1.5rem 9%;
+}
+
+.header .navbar a {
+  font-size: 1.7rem;
+  color: #aaa;
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+.header .navbar a:hover {
+  color:#F9A603;
+}
+
+.header .btn {
+  margin-top: 0;
+}
+
+.logo {
+  font-size: 2.5rem;
+  color: #fff;
+  font-weight: bolder;
+}
+
+.logo i {
+  color: #29d9d5;
+  padding-right: .5rem;
+}
+
+#menu-btn {
+  font-size: 2.5rem;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+.home {
+  margin: 0 auto;
+  margin-top: 9rem;
+  width: 90%;
+  border-radius: 1rem;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(17, 17, 17, 0.7)), to(rgba(17, 17, 17, 0.7))), url(../images/home-bg.jpg) no-repeat;
+  background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(../images/home-bg.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 80vh;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-bottom: 5rem;
+}
+
+.home .content {
+  text-align: center;
+}
+
+.home .content span {
+  font-weight: bolder;
+  color: transparent;
+  -webkit-text-stroke: 0.1rem #fff;
+  font-size: 4vw;
+  display: block;
+}
+
+.home .content h3 {
+  font-size: 6vw;
+  color: #fff;
+}
+
+.home .content p {
+  max-width: 60rem;
+  margin: 1rem auto;
+  font-size: 1.4rem;
+  color: #aaa;
+  line-height: 2;
+}
+.packagebar {
+     right: -16%;
+    position: relative;
+    height: 11%;
+    width: 70%;
+    background: #454545;
+    padding: 15px;
+    z-index: 99;
+    border-radius: 10px;
+    
+}
+
+.packagebar a {
+    color: #fff;
+    text-decoration: none;
+}
+.menu-items {
+    /* height: 100%;
+    width: 100%; */
+    /* margin-top: -10px; */
+    list-style: none;
+    transition: all 0.4s ease;
+}
+.item a {
+
+    /* text-align: center; */
+    padding: 26px;
+    display: absolute;
+    /* width: 0%; */
+    /* border-radius: 12px; */
+    font-size: 15px;
+    margin-left: 1rem;
+    
+}
+
+.item i {
+    font-size: 12px;
+
+}
+
+.item a:hover {
+    color: #F9A603;
+}
+
+.slider {
+  margin-top: 90px;
+  width: 100%;
+  height: 70%;
+  /* Adjust the height as needed */
+  overflow: hidden;
+  position: relative;
+}
+
+.slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 80%;
+
+  
+  /* filter: blur(0.9px); */
+}
+
+.slide-text {
+  position: absolute;
+  top: 43%;
+  left: 36%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 44px;
+  font-weight: bolder;
+  text-align: center;
+
+  /* text-shadow: 2px 2px 4px whitesmoke; */
+}
+
+.slide-link {
+  position: absolute;
+  top: 53%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.slide-link a {
+
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 14px;
+  font-weight: normal;
+  /* text-align: left; */
+}
+
+.slide-link a:hover {
+
+  transform: translate(-50%, -50%);
+  color: #F9A603;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.packages .box-container{
+  
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(27rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+  gap: 1.5rem;
+}
+
+.packages .box-container .box {
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #222;
+}
+
+.packages .box-container .box:hover img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+.packages .destination .box-container .box .image {
+  height: 20rem;
+  overflow: hidden;
+  width: 100%;
+}
+.packages .box-container .box .image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.packages .box-container .box .content {
+  padding: 2rem;
+  text-align: center;
+}
+
+.packages .box-container .box .content h3 {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.packages .box-container .box .content h5 {
+  font-size: 1.5rem;
+  color: #F9A603;
+}
+
+.packages .box-container .box .content p {
+  padding: 1rem 0;
+  font-size: 1.4rem;
+  color: #aaa;
+  line-height: 2;
+}
+
+.packages .box-container .box .content a {
+  font-size: 1.4rem;
+  color: #F9A603;
+  
+}
+
+.packages .box-container .box .content a:hover i {
+  padding-left: 1rem;
+}
+
+.packages .box-container .box .content a i {
+  padding-right: .5rem;
+}
+
+.form {
+
+  width: 45%;
+  margin: 1rem auto;
+  margin-top: 2rem;
+  background: black;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0 0.5rem 1rem #fff;
+  box-shadow: 0 0.5rem 1rem #fff;
+  padding: 3rem 2rem;
+}
+
+.form .head2 {
+  text-transform: capitalize;
+  font-size: 16px;
+  font-family: Open Sans, sans-serif;
+  letter-spacing: 1px;
+  margin-left: 3rem;
+  color: white;
+  margin-top: 1.5rem;
+  font-weight: bold;
+}
+
+.form p {
+  text-transform: capitalize;
+  font-size: 10px;
+  font-family: Open Sans, sans-serif;
+  letter-spacing: 1px;
+  margin-left: 3rem;
+  color: white;
+  margin-top: 1.5rem;
+}
+
+.form a {
+  color: #F9A603;
+}
+
+.form a:hover {
+  color: yellow;
+}
+
+.form label {
+  text-transform: capitalize;
+  font-size: 14px;
+  font-family: Open Sans, sans-serif;
+  letter-spacing: 1px;
+  margin-left: 13rem;
+  color: white;
+  margin-top: 1.5rem;
+
+}
+
+.redastric {
+  color: red;
+}
+
+.textbox {
+  margin-left: 10rem;
+  width: 65%;
+  border-radius: 5rem;
+  border: 0.05rem solid whitesmoke;
+  background: none;
+  font-size: 1.5rem;
+  text-transform: none;
+  color: white;
+  margin-top: 0.4rem;
+  margin-bottom: 1rem;
+  padding: 1.2rem 1.4rem;
+}
+
+
+.textbox option {
+  background-color: #333;
+  color: #f2f2f2;
+}
+
+.textbox option:hover {
+  background-color: #F9A603;
+  color: #F9A603;
+}
+
+.form h3{
+  color: #F9A603;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.form span{
+  color: #fff;
+  font-size: 2.5rem;
+  margin-left: 1.5rem;
+  margin-left: 15.5rem;
+  
+}
+
+.para{
+  margin-left: 3%;
+}
+.login .btn {
+  margin-left: 43%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  color: #fff;
+  border: 0.1rem solid #fff;
+  border-radius: 5rem;
+  cursor: pointer;
+  background: none;
+}
+
+.login .btn:hover {
+  background: #F9A603;
+  color: #111;
+}
+
+.price p{
+  margin-left: 7%;
+  
+  line-height: 1.5;
+}
+
+.copyrights {
+  width: 100%;
+  font-size: 14px;
+  color: #6f6e6e;
+  margin: 0px;
+  float: left;
+  padding: 25px 0px;
+  background-color: #2e2e2e;
+}
+
+.copyrights span {
+  margin-left: 35%;
+}

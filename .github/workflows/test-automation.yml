@@ -1,0 +1,281 @@
+name: SOORI Travels Test Automation
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run tests every day at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  # ─── API Tests ───
+  api-tests:
+    name: API Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: soori_travels
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo_mysql, mbstring
+          tools: composer
+
+      - name: Setup Database
+        run: mysql -h 127.0.0.1 -u root -proot soori_travels < database/schema.sql
+
+      - name: Start PHP Server
+        run: php -S localhost:8080 -t . &
+        env:
+          DB_HOST: 127.0.0.1
+          DB_NAME: soori_travels
+          DB_USER: root
+          DB_PASS: root
+          DB_PASSWORD: root
+          CI: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: tests
+        run: npm ci
+
+      - name: Install Playwright
+        working-directory: tests
+        run: npx playwright install --with-deps
+
+      - name: Run API Tests
+        working-directory: tests
+        run: npx playwright test --project=api-tests
+        env:
+          BASE_URL: http://localhost:8080
+          ADMIN_EMAIL: admin@sooritravels.com
+          ADMIN_PASSWORD: password
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: api-test-report
+          path: tests/playwright-report/
+
+  # ─── E2E Tests ───
+  e2e-tests:
+    name: E2E Tests (${{ matrix.browser }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: soori_travels
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo_mysql, mbstring
+
+      - name: Setup Database
+        run: mysql -h 127.0.0.1 -u root -proot soori_travels < database/schema.sql
+
+      - name: Start PHP Server
+        run: php -S localhost:8080 -t . &
+        env:
+          DB_HOST: 127.0.0.1
+          DB_NAME: soori_travels
+          DB_USER: root
+          DB_PASS: root
+          DB_PASSWORD: root
+          CI: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: tests
+        run: npm ci
+
+      - name: Install Playwright
+        working-directory: tests
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Run E2E Tests
+        working-directory: tests
+        run: npx playwright test --project=e2e-${{ matrix.browser }}
+        env:
+          BASE_URL: http://localhost:8080
+          CI: true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e2e-report-${{ matrix.browser }}
+          path: tests/playwright-report/
+
+  # ─── Security Tests ───
+  security-tests:
+    name: Security Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: soori_travels
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo_mysql, mbstring
+
+      - name: Setup Database
+        run: mysql -h 127.0.0.1 -u root -proot soori_travels < database/schema.sql
+
+      - name: Start PHP Server
+        run: php -S localhost:8080 -t . &
+        env:
+          DB_HOST: 127.0.0.1
+          DB_NAME: soori_travels
+          DB_USER: root
+          DB_PASS: root
+          DB_PASSWORD: root
+          CI: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: tests
+        run: npm ci
+
+      - name: Install Playwright
+        working-directory: tests
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Security Tests
+        working-directory: tests
+        run: npx playwright test --project=security-tests
+        env:
+          BASE_URL: http://localhost:8080
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: security-test-report
+          path: tests/playwright-report/
+
+  # ─── Accessibility Tests ───
+  accessibility-tests:
+    name: Accessibility Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: soori_travels
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo_mysql, mbstring
+
+      - name: Setup Database
+        run: mysql -h 127.0.0.1 -u root -proot soori_travels < database/schema.sql
+
+      - name: Start PHP Server
+        run: php -S localhost:8080 -t . &
+        env:
+          DB_HOST: 127.0.0.1
+          DB_NAME: soori_travels
+          DB_USER: root
+          DB_PASS: root
+          DB_PASSWORD: root
+          CI: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: tests
+        run: npm ci
+
+      - name: Install Playwright
+        working-directory: tests
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Accessibility Tests
+        working-directory: tests
+        run: npx playwright test --project=accessibility-tests
+        env:
+          BASE_URL: http://localhost:8080
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: a11y-test-report
+          path: tests/playwright-report/

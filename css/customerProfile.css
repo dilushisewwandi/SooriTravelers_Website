@@ -1,0 +1,477 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 9rem;
+}
+
+html::-webkit-scrollbar {
+    width: 1rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #111;
+    border-radius: 5rem;
+}
+
+body {
+    background: #D3D3D3;
+    overflow-x: hidden;
+}
+
+section {
+    padding: 3rem 9%;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.fullname {
+    margin-top: 5rem;
+}
+
+.heading span {
+    color: #fff;
+    font-size: 2rem;
+}
+
+.heading h1 {
+    font-size: 4rem;
+    color: #fff;
+}
+
+.btn {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.7rem;
+    color: #fff;
+    border: 0.2rem solid #fff;
+    border-radius: 5rem;
+    cursor: pointer;
+    background: none;
+}
+
+.fbtn {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.7rem;
+    color: black;
+    border: 0.2rem solid black;
+    border-radius: 5rem;
+    cursor: pointer;
+    background: none;
+}
+
+.btn:hover {
+    background: #F9A603;
+    color: #111;
+}
+
+.fbtn:hover {
+    background: #F9A603;
+    color: white;
+    border: white;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #222;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1.5rem 9%;
+}
+
+.header .navbar a {
+    font-size: 1.7rem;
+    color: #aaa;
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+.header .navbar a:hover {
+    color: #F9A603;
+}
+
+.header .btn {
+    margin-top: 0;
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: #fff;
+    font-weight: bolder;
+}
+
+#menu-btn {
+    font-size: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+
+.sidebar {
+    right: 90%;
+    top: 22%;
+    position: fixed;
+    height: 70%;
+    width: 120px;
+    background: #454545;
+    padding: 15px;
+    z-index: 99;
+    border-radius: 10px;
+}
+
+.sidelogo {
+    font-size: 25px;
+    padding: 0 15px;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin-top: 75px;
+    overflow-y: scroll;
+    margin-left: 0px;
+}
+
+.menu-content::-webkit-scrollbar {
+    display: none;
+}
+
+.menu-items {
+    height: 100%;
+    width: 100%;
+    list-style: none;
+    transition: all 0.4s ease;
+}
+
+.submenu-active .menu-items {
+    transform: translateX(-56%);
+}
+
+/* .menu-title {
+    color: green;
+    font-size: 14px;
+    padding: 15px 20px;
+  } */
+
+/* .menu-title.clicked {
+    color: red;
+  } */
+.item a {
+    text-align: center;
+    padding: 16px;
+    display: inline-block;
+    width: 100%;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.item i {
+    font-size: 12px;
+
+}
+
+.item a:hover {
+    color: #F9A603;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.contentBox {
+    right: 7%;
+    top: 22%;
+    position: fixed;
+    height: 70%;
+    width: 1100px;
+    background: #454545;
+    padding: 15px;
+    z-index: 99;
+    border-radius: 10px;
+}
+
+.contentBox .vertical-line {
+
+    position: absolute;
+    top: 18%;
+    left: 35rem;
+    /* right: 0; */
+    height: 60%; /* Adjust the height as needed */
+    width: 1px; /* Adjust the width as needed */
+    background-color: #F9A603;
+
+}
+
+.profile-pic-div{
+    margin-right: 5rem;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    left: 16.25%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #fff;
+}
+
+#photo{
+    height: 100%;
+    width: 100%;
+    
+}
+
+#file{
+    display: none;
+}
+
+#uploadBtn{
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    color: wheat;
+    line-height: 30px;
+    font-family: sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    display: none;
+}
+
+.textbox {
+    margin-left: 10rem;
+    width: 55%;
+    border-radius: 5rem;
+    border: 0.05rem solid whitesmoke;
+    background: none;
+    font-size: 1.5rem;
+    text-transform: none;
+    color: white;
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+    padding: 1.2rem 1.4rem;
+  }
+
+  .detail{
+    margin-top: 2.5rem;
+    margin-left: 36rem;
+  }
+  .detail h2{
+    margin-left: 13.4rem;
+    font-size: 34px;
+    color: #F9A603;
+    margin-bottom: 2rem;
+    font-weight: bolder;
+  }
+  .detail label {
+    text-transform: capitalize;
+    font-size: 14px;
+    font-family: Open Sans, sans-serif;
+    letter-spacing: 1px;
+    margin-left: 11rem;
+    color: white;
+    margin-top: 1.5rem;
+  
+  }
+  .btnedit,
+  .btnupdate{
+    margin-left: 25rem;
+  }
+  
+ .btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 0.9rem;
+    color: #fff;
+    border: 0.2rem solid #fff;
+    border-radius: 5rem;
+    cursor: pointer;
+    background: none;
+  }
+  
+   .btn:hover {
+    background: #F9A603;
+    color: #111;
+  }
+
+  .security{
+    margin-top: 4rem;
+    margin-left: -1rem;
+  }
+  .security label {
+    text-transform: capitalize;
+    font-size: 10px;
+    font-family: Open Sans, sans-serif;
+    letter-spacing: 1px;
+    margin-left: 11rem;
+    color: white;
+    margin-top: 1.5rem;
+    
+  }
+  .security h2{
+    margin-left: 12.4rem;
+    font-size: 34px;
+    color: #F9A603;
+    margin-bottom: 2rem;
+    font-weight: bolder;
+  }
+  .security span{
+    font-size: 12px;
+    color: #fff;
+  }
+  .changePassword{
+    margin-left: 22rem;
+  }
+  .security .btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 0.9rem;
+    color: #fff;
+    border: 0.1rem solid #fff;
+    border-radius: 3rem;
+    cursor: pointer;
+    background: none;
+  }
+  .security .btn:hover {
+    background: #F9A603;
+    color: #111;
+  }
+  .security .textbox{
+    margin-left: 10rem;
+    width: 55%;
+    border-radius: 5rem;
+    border: 0.05rem solid whitesmoke;
+    background: none;
+    font-size: 1rem;
+    text-transform: none;
+    color: white;
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+    padding: 1.2rem 1.4rem;
+  }
+
+  /* Add this to your CSS */
+.loading-spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+  @media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+  .header {
+    padding: 1.5rem 2rem;
+  }
+  section {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+    #menu-btn {
+      display: inline-block;
+    }
+    .header .navbar {
+      position: absolute;
+      top: 99%;
+      left: 0;
+      right: 0;
+      background: #222;
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+              clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    .header .navbar.active {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+              clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    .header .navbar a {
+      margin: 2rem;
+      font-size: 2rem;
+      display: block;
+    }
+    .home {
+      margin-top: 10rem;
+    }
+    .home .content span {
+      font-size: 8vw;
+    }
+    .home .content h3 {
+      font-size: 9vw;
+    }
+  }
+  
+  @media (max-width: 450px) {
+    html {
+      font-size: 50%;
+    }
+    .about .content h3 {
+      font-size: 3.5rem;
+    }
+    .banner .content h3 {
+      font-size: 2.7rem;
+    }
+  }
+
